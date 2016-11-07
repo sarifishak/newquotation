@@ -1,0 +1,267 @@
+ <style type="text/css">
+    @charset"UTF-8";
+
+#signin 
+{
+    position:absolute;
+	min-width:22%;
+	height 20%;
+    top:0%;
+    right:0%;
+    z-index:10;
+    background-color:#CCC;
+    border: 1px solid grey;
+    
+}
+#signin input {
+ background-color:#FFF  
+}
+
+/* CSS Document */
+ @font-face {
+    font-family:apple;
+    src:url(../college/work/Website/Fonts/webfontkit-20140129-101837/apple_chancery-webfont.ttf);
+}
+html, body 
+{
+    Background-color:rgba(255, 165, 0, 0.5);
+}
+
+#white_box 
+{
+    position:absolute;
+    min-width:90%;
+    max-width:90%;
+    margin:0 auto;
+    height:92%;
+    top:0%;
+    left:5%;
+    right:5%;
+    background:white;
+    z-index:0;
+    width:80%;
+    border:5px rgba(0, 239, 255, 0.5) solid;
+    border-top:none;
+}
+
+#logo 
+{
+    position:absolute;
+    background-image:url(../college/work/Website/Logo/png/Logo.png);
+    background-size:100%;
+    width:600px;
+    height:400px;
+    margin:0 auto;
+    z-index:8;
+    top:-1.8%;
+    left:20%;
+    right:0px;
+    background-repeat:no-repeat;
+}
+
+#middle_box 
+{
+    margin-top:78px;
+    min-width:99%;
+    max-width:110%;
+    height:45px;
+    background:blue;
+    position:absolute;
+    left:0.6%;
+    top:1.5%;
+    z-index:3;
+    background-image: -webkit-gradient(linear, right bottom, right top, color-stop(0, #5977FF), color-stop(1, #59C5FF));
+    background-image: -o-linear-gradient(top, #5977FF 0%, #59C5FF 100%);
+    background-image: -moz-linear-gradient(top, #5977FF 0%, #59C5FF 100%);
+    background-image: -webkit-linear-gradient(top, #5977FF 0%, #59C5FF 100%);
+    background-image: -ms-linear-gradient(top, #5977FF 0%, #59C5FF 100%);
+    background-image: linear-gradient(to top, #5977FF 0%, #59C5FF 100%);
+}
+
+#bar_outside 
+{
+    margin-top:75px;
+    min-width:100%;
+    max-width:120%;
+    height:55px;
+    background:#ff69b4;
+    position:absolute;
+    left:0px;
+    z-index:2;
+}
+
+#box1 
+{
+    margin-bottom:0px;
+    min-width:21.6%;
+    max-width:39.03%;
+    height:55px;
+    background:#000;
+    position:absolute;
+    opacity:0.3;
+    z-index:4;
+    left:40.1%;
+    top:11.5%;
+}
+
+#home 
+{
+    font-family:apple;
+    transition:ease 500ms;
+    position:absolute;
+    top:12.3%;
+    font-size:25px;
+    color:black;
+    left:5%;
+    z-index:9;
+}
+
+#home:hover 
+{
+    transition:ease-in 250ms;
+    font-size:30px;
+}
+
+#about
+{
+    font-family:apple;
+    position:absolute;
+    top:11.55%;
+    font-size:25px;
+    color:black;
+    left:16.88%;
+    z-index:9;
+}
+
+#us 
+{
+    font-family:apple;
+    position:absolute;
+    top:14.4%;
+    font-size:25px;
+    color:black;
+    left:18.5%;
+    z-index:9;
+}
+
+#our 
+{
+    font-family:apple;
+    position:absolute;
+    top:11.35%;
+    font-size:25px;
+    color:black;
+    left:30%;
+    z-index:9;
+}
+
+#services 
+{
+    font-family:apple;
+    position:absolute;
+    top:14.3%;
+    font-size:25px;
+    color:black;
+    left:29%;
+    z-index:9;
+}
+
+#your_in
+{
+    font-family:apple;
+    position:absolute;
+    top:11%;
+    font-size:22px;
+    color:black;
+    left:66%;
+    z-index:9;
+}
+
+#safe_hands
+{
+    font-family:apple;
+    position:absolute;
+    top:14.2%;
+    font-size:22px;
+    color:black;
+    left:65.2%;
+    z-index:9;
+}
+
+#student 
+{
+    font-family:apple;
+    position:absolute;
+    top:11.5%;
+    font-size:22px;
+    color:black;
+    left:83.50%;
+    z-index:9;
+}
+
+#parent 
+{
+    font-family:apple;
+    position:absolute;
+    top:14.82%;
+    font-size:22px;
+    color:black;
+    left:83.2%;
+    z-index:9;
+}
+
+#copy 
+{
+    font-family:apple;
+    position:absolute;
+    top:100%;
+    font-size:14px;
+    color:black;
+    left:30%;
+    z-index:10;
+}
+
+#travelle 
+{
+    font-family:apple;
+    position:absolute;
+    top:100%;
+    font-size:14px;
+    color:black;
+    left:40%;
+    z-index:10;
+}
+
+#date 
+{
+    font-family:apple;
+    position:absolute;
+    top:100%;
+    font-size:14px;
+    color:black;
+    left:50%;
+    z-index:10;
+}
+
+#web 
+{
+    font-family:apple;
+    position:absolute;
+    top:100%;
+    font-size:14px;
+    color:black;
+    left:60%;
+    z-index:10;
+}
+
+#all 
+{
+    font-family:apple;
+    position:absolute;
+    top:100%;
+    font-size:14px;
+    color:black;
+    left:70%;
+    z-index:10;
+}
+  </style>
