@@ -73,22 +73,23 @@ class PDF extends FPDF
         
     }
     
-    function letterFirstPage($customerName,$customerAddress,$patientName,$userName) {
+    function letterFirstPage($customerName,$customerAddress,$patientName,$userName,$quotationDate) {
         
         $this->AddPage();
         
-        $this->mnFalahAddress();
+        $newQuotationdate=date_create($quotationDate);
+        $formatedDate = date_format($newQuotationdate,"jS F, Y");
         
-        $this->Cell(0,10,$customerName,0,1); //.$quotations->customerData->firstName.' '.$quotations->customerData->lastName,0,1);
-        $this->Cell(0,5,$customerAddress,0,1); //.$quotations->customerData->address.' '.$quotations->customerData->city.' '.$quotations->customerData->postcode.' '.$quotations->customerData->state,0,1);
-        
-        $this->Cell(0,10,' ',0,1);
-        
+        $this->SetTextColor(0,0,0);
+        $this->SetFont('');
+        $this->SetFont('Times','',12);
+        $this->Cell(0,10,$formatedDate,0,1);
         $this->Cell(0,10,'Dear '.$customerName.',',0,1); //.$quotations->customerData->firstName.' '.$quotations->customerData->lastName,0,1);
+        $this->Cell(0,10,' ',0,1);  // just a space
         
         $this->SetFont('Times','B',16);
         $this->SetFont('','U');
-        $this->Cell(0,10,'Home Nursing Service for '.$patientName.'.',0,1);
+        $this->Cell(0,10,'Home Nursing Service for '.$customerName.'.',0,1);
         $this->SetFont('');
         $this->SetFont('Times','',12);
         
@@ -103,17 +104,19 @@ class PDF extends FPDF
         $this->Cell(0,20,'Yours sincerely,',0,1);
         $this->Cell(0,20,'Thank you and kind regards',0,1);
         $this->Cell(0,5,$userName,0,1);
+        $this->Cell(0,5,'CEO',0,1);
         //$this->SetTextColor(128,0,255); // merah
         $this->SetTextColor(255,0,128); // pink
         $this->Cell(0,5,'MN AL FALAH SDN BHD (www.mnalfalah.com.my)',0,1);
         $this->Cell(0,5,'Call Centre: +6 03 8926 0044 / +6 012 252 6499',0,1);
         $this->SetTextColor(0,0,0);
+        $this->mnFalahAddress();
         
     
     }  // function letterFirstPage()
     
     function quotationPage($quotationNo,$quotationDate,$customerName,$customerAddress,$customerEmail,$customerContact,
-                           $patientName,$requestNote,$quotationSummary,$feeFor,$patientAddress) {
+                           $patientName,$requestNote,$quotationSummary,$feeFor,$patientAddress,$patientIC) {
         
         $quotationRef = substr($quotationDate,0,4).'/'.$quotationNo;
         $this->AddPage();
@@ -167,6 +170,8 @@ class PDF extends FPDF
         $this->Cell(80,7,'Requirements','TBLR'); $this->Cell(0,7,$feeFor,'TBLR');
         $this->Ln();
         $this->Cell(80,7,'Patient Name','TBLR'); $this->Cell(0,7,$patientName,'TBLR');
+        $this->Ln();
+        $this->Cell(80,7,'Patient IC','TBLR'); $this->Cell(0,7,$patientIC,'TBLR');
         $this->Ln();
         $this->Cell(80,7,'Patient Address','TBLR'); $this->Cell(0,7,$patientAddress,'TBLR');
         $this->Ln();
@@ -719,7 +724,7 @@ class PDF extends FPDF
     $pdf = new PDF();
     $pdf->AliasNbPages();
     
-    $pdf->letterFirstPage($customerName,$customerAddress,$patientName,'Nor Laily Shima bt Abd Samad');//$customerName,$customerAddress,$patientName,$userName
+    $pdf->letterFirstPage($customerName,$customerAddress,$patientName,'Dr. Norshinah Kamarudin',$quotations->quotationDate);//$customerName,$customerAddress,$patientName,$userName
     
     
     if($totalDays < 20 ) {
@@ -730,9 +735,9 @@ class PDF extends FPDF
     
     $pdf->quotationPage($quotations->quotationNo,$quotations->quotationDate,$customerName,$customerAddress,$quotations->customerData->email,
                         $quotations->customerData->mobile,$patientName,$requestNote,$quotationSummary,
-                        $quotations->feeFor,$quotations->patientData->address);// $quotationDate,$customerName,$customerAddress,$customerEmail,$customerContact,$patientName,$requestNote,$quotationSummary
+                        $quotations->feeFor,$quotations->patientData->address,$quotations->patientData->ic);// $quotationDate,$customerName,$customerAddress,$customerEmail,$customerContact,$patientName,$requestNote,$quotationSummary
     
-    $pdf->chargePage('CHARGES FOR HOME NURSING SERVICE',$patientName,$quotations->patientData->ic,$customerAddress,
+    $pdf->chargePage('CHARGES FOR HOME NURSING SERVICE',$patientName,$quotations->patientData->ic,$quotations->patientData->address,
                      $quotations->hourPerDay,$quotations->basicCharge,$quotations->startDate,$quotations->endDate,$quotations->mileage,
                      $quotations->adminFee,$quotations->gst,$quotations->totalAmount,$totalDays,$quotations->feeFor,
                      $quotations->physiotherapy,$quotationSummary,$quotations->additionalCharge,
