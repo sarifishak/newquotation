@@ -89,7 +89,7 @@ class PDF extends FPDF
         
         $this->SetFont('Times','B',16);
         $this->SetFont('','U');
-        $this->Cell(0,10,'Home Nursing Service for '.$customerName.'.',0,1);
+        $this->Cell(0,10,'Home Nursing Service for '.$patientName.'.',0,1);
         $this->SetFont('');
         $this->SetFont('Times','',12);
         
