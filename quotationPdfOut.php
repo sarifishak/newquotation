@@ -635,11 +635,11 @@ class PDF extends FPDF
         // Line break
     	$this->Ln();
     	$this->SetFont('','B');
-    	$this->Cell(0,5,'MN AL FALAH SDN. BHD.','LR');
+    	$this->Cell(0,5,'NORSHINAH BINTI KAMARUDIN.','LR');  //old 'MN AL FALAH SDN. BHD.' (17/2/2017 4:12PM)
     	// Times 12
     	$this->SetFont('Times','',12);
     	$this->Ln();
-    	$this->Cell(0,5,'- MAYBANK Account no.: 562834-611-406','LR');
+    	$this->Cell(0,5,'- MAYBANK Account no.: 562834-611-406','LR');  // old 562834-611-406 (17/2/2017 4:12PM)
     	$this->Ln();
     	$this->Cell(0,5,'- Kindly submit the proof of payment to accounts@mnalfalah.com.my','LRB');
     
