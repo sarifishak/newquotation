@@ -575,14 +575,23 @@ class PDF extends FPDF
         $this->Cell(40,7,'Date',0); $this->Cell(4,7,':',0); $this->Cell(100,7,$quotationDate,0);
         $this->Ln();
     
-        $this->SetFont('','B');
-        $this->Cell(0,10,'Terms and Conditions- please refer to the attached Quotation ('.$quotationRef.')',0,1);
-        $this->SetFont('Times','',12);
-        // Read text file
-    	//$txt = file_get_contents($file);
-    	// Output justified text
-    	//$this->MultiCell(0,5,$txt,0);
-    	
+        $lineSpace = 7;
+        $this->SetFont('','U'); //underline
+        $this->Cell(0,10,'Definition',0,1,'C',false); //center
+    	$this->Ln(4);
+        $this->SetFont('Times','',12); //remove the under line
+        $this->Cell(0,$lineSpace,'"we", "us", "our" refer to MN Al Falah Sdn Bhd (Company No. 886261-X).',' ');
+        $this->Ln();
+        $this->Cell(0,$lineSpace,'"client" refers to the person who is requesting for the service.',' ');
+        $this->Ln();
+        $this->Cell(0,$lineSpace,'"patient" refers to the person receiving the service, who may or may not be the same person as the client.',' ');
+        $this->Ln();
+        
+        $this->SetFont('','U'); //underline
+        $this->Cell(0,10,'The Service',0,1,'C',false); //center
+    	$this->Ln(4);
+        $this->SetFont('Times','',12); //remove the under line
+        
     	$this->termAndConditionAlign1('1.','Above is the schedule of fees for our Company’s "NURSING & GENERAL HOME CARE SERVICES".');
         $this->termAndConditionAlign1('2.','The above-said fees include direct consultation with medical specialist and/or Nursing Sister during reasonable hours. Consultation with the medical specialist is subject to his/her schedule.');
         $this->termAndConditionAlign1('3.','The above-said fees do not include: additional use of items such as glucometer (bedside glucose); consumable items, disposable napkins, use of wound dressing sets and materials, catheters and NG tubes, drugs (medications), and/or any other special procedure which is beyond the scope of the basic general care; mileage and logistics; and extra charges during gazetted public holidays.');
@@ -600,6 +609,13 @@ class PDF extends FPDF
         
         $this->termAndConditionAlign1('6.','After-hours and weekend rates differ.');
         $this->termAndConditionAlign1('7.','Upon the relevant quotation agreed to and signed by or on behalf of the client, and upon the Company’s receipt of payment, the Company shall within three (3) working days identify the appropriate care provider / personnel for the client.');
+        
+        $this->SetFont('','U'); //underline
+        $this->Cell(0,10,'The Fees',0,1,'C',false); //center
+    	$this->Ln(4);
+        $this->SetFont('Times','',12); //remove the under line
+        
+        
         $this->termAndConditionAlign1('8.','Any enquiries, financial transactions or any changes to the services, must be communicated directly with the Call Centre, and not the care provider/personnel assigned to the client.');
         $this->termAndConditionAlign1('9.','The Company exercises job rotation amongst our nurses, caregivers and companions. Such personnel are assigned according to availability and roster. Accordingly, the Company has the absolute discretion to determine the appropriate care giver / personnel for the client.');
         $this->termAndConditionAlign1('10.','Payment is only deemed to have been accepted by the Company upon clearance and/or actual receipt of such monies into the Company’s designated bank account(s). The client must send or deliver the hardcopy of the payment slip to the Company’s office as proof of payment, with the name of the patient and client written on the payment slip.');
