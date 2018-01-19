@@ -405,7 +405,21 @@ class ImportFieldManager{
     $quotations->id = $id;
     $quotations->deleteQuotationById();
   }
-  
+ 
+  function closeDealQuotationById($id) {
+
+    $quotations = new Quotations();
+    $quotations->id = $id;
+    $quotations->closeDealQuotationById();
+  }
+
+  function cancelCloseDealQuotationById($id) {
+
+    $quotations = new Quotations();
+    $quotations->id = $id;
+    $quotations->cancelCloseDealQuotationById();
+  }
+ 
   function updateQuotationInquiry($userid) {
       
       $debugMsg = "";

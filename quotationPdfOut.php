@@ -33,7 +33,7 @@ class PDF extends FPDF
     	// Arial italic 8
     	$this->SetFont('Arial','I',8);
     	$this->SetTextColor(255,0,128); // pink
-    	$this->Cell(0,5,'MN AL FALAH SDN BHD (88261-X)',0,1,'C');
+    	$this->Cell(0,5,'MN AL FALAH SDN BHD (886261-X)',0,1,'C');
     	$this->Cell(0,5,'D-11-3A, Plaza Paragon Point II, Jalan Medan Pusat Bandar 5, Seksyen 9, 43650 Bandar Baru Bangi Selangor, Malaysia',0,1,'C');
     	$this->Cell(0,5,'tel +6 03 8926 0044 mobile +6 012 2526 499 fax +6 03 8926 4873 www.mnalfalah.com.my',0,1,'C');
     	// Page number
@@ -46,7 +46,7 @@ class PDF extends FPDF
     function mnFalahAddress()
     {
         $this->SetFont('Times','',12);
-        $this->Cell(0,5,'MN AL Falah Sdn Bhd (8862661-X)',0,1);
+        $this->Cell(0,5,'MN AL Falah Sdn Bhd (886261-X)',0,1);
         $this->Cell(0,5,'D-11-3A, Plaza Paragon Point 11,',0,1);
         $this->Cell(0,5,'Jalan Medan Pusat Bandar 5,',0,1);
         $this->Cell(0,5,'Seksyen 9,43650 Bandar Baru Bangi,',0,1);
@@ -58,7 +58,7 @@ class PDF extends FPDF
     function mnFalahAddressWithReference($quotationDate,$quotationRef)
     {
         $this->SetFont('Times','',12);
-        $this->Cell(130,7,'MN AL Falah Sdn Bhd (8862661-X)',0);
+        $this->Cell(130,7,'MN AL Falah Sdn Bhd (886261-X)',0);
         $this->Cell(20,7,'Date','TLRB');$this->Cell(30,7,$quotationDate,'TLRB');
         $this->Ln();
         
@@ -603,7 +603,7 @@ class PDF extends FPDF
         
         $this->termAndConditionAlign1('4.','We exercise job rotation amongst the Personnel. The Personnel are assigned according to their availability and roster. Accordingly, we have the absolute discretion to determine the appropriate Personnel for the client / patient based on suitability and availability.');
         $this->termAndConditionAlign1('5.','We do not guarantee the availability of any or a specific Personnel for any date, time and location which the client seeks for the service to be provided.');
-        $this->termAndConditionAlign1('6.','If the assigned Personnel is unavailable for an appointment which had already been confirmed, we will provide the next available and suitable Personnel based on the information and requirement that the client originally provided.');
+        $this->termAndConditionAlign1('6.','If the assigned Personnel is unavailable for an appointment which had already been confirmed, we will provide the next available and suitable Personnel (“replacement Personnel”) based on the information and requirement that the client originally provided. The replacement Personnel shall be arranged at a later date, if no replacement can be secured for the original appointment date. The client shall have no claims whatsoever against us in such situation.');
         $this->termAndConditionAlign1('7.','We do provide certain assets and/or equipments for rental / lease (subject to availability). The rental fee for any assets and/or equipment is on a monthly basis and shall not be refunded if returned by the client prior to the expiry of the agreed period of lease.  Repair / replacement costs shall be borne by the client if the leased assets and/or equipment are damaged during the period of use.');
         
         $this->SetFont('','U'); //underline
@@ -614,9 +614,9 @@ class PDF extends FPDF
         $this->termAndConditionAlign1('8.','Our schedule of fees for the service is as per the quotation. All the quoted figures in the quotation are in Malaysian Ringgit (RM). After-hours and weekend rates / charges may differ, unless expressly stated otherwise in the quotation.');
         $this->termAndConditionAlign1('9.','The fees include free telephone consultation with our own appointed medical doctor during reasonable hours, subject to his/her schedule and availability.');
         $this->termAndConditionAlign1('10.','The fees do not include: use of items and materials such as (but not limited to) glucometer, consumable items, diapers, use of wound dressing sets and materials, catheters and NG tubes, drugs (medications), and/or any other special procedure which is beyond the scope of the basic general care. Such items and materials shall be charged separately.');
-        $this->termAndConditionAlign1('11.','Any other professional services including but not limited to Doctor\'s House Call, are not included in the quotation. Separate charges shall apply based on such professional\'s and/or the doctor\'s prevailing service rate.');
+        $this->termAndConditionAlign1('11.','Any other professional services including but not limited to Doctor’s House Call, are not part of the quotation (unless expressly stated otherwise  in the quotation). Separate charges shall apply based on such professional’s and/or the doctor’s prevailing service rate.');
         $this->termAndConditionAlign1('12.','For any request by the client on any additional criteria or specific criteria of a Personnel, we reserve the right to impose surcharge of up to RM180 per request.');
-        $this->termAndConditionAlign1('13.','For any request by the client for a change of address or location during the period of service shall be subject to an additional surcharge of up to RM180.00. We have the absolute discretion to change the Personnel in such a situation.');
+        $this->termAndConditionAlign1('13.','For any request by the client for a change of address or location, whether before or during the period of service, shall be subject to an additional surcharge of up to RM180.00. We have the absolute discretion to change the Personnel and to re-arrange the appointment schedule (based on Personnel availability) in such a situation.');
         $this->termAndConditionAlign1('14.','Payment terms:');
         
         $this->termAndConditionAlign2('a)','Payment must be made in full BEFORE the start of service; and before the start of the next period of service (for recurring service).');
@@ -634,9 +634,17 @@ class PDF extends FPDF
         $this->termAndConditionAlign1('18.','The client and/or patient SHALL NOT give any tips, gifts or any form of remuneration or payment to the Personnel without our prior written consent');
         $this->termAndConditionAlign1('19.','The Personnel is prohibited from receiving or soliciting payment from the client or patient. The Personnel is also prohibited from receiving offers, or soliciting for, duties directly with the client, during or after the cessation of the service. If the Personnel does any of such act, the client shall immediately notify our Callcentre.');
         $this->termAndConditionAlign1('20.','Any enquiries, financial transactions or any changes to the service, must be communicated directly with the Callcentre, and not through the Personnel assigned to the patient.');
-        $this->termAndConditionAlign1('21.','Upon the client\'s agreement to our quotation and the terms and conditions herein (whether verbally, text message or in writing), for any cancellation before the start of service, we reserve the right to charge the client a fee of 30% over the total cost.');
+        $this->termAndConditionAlign1('21.','Subject to our rights and discretion to exercise Clause 23 below, upon the client’s agreement and/or acknowledgement to the quotation and the terms and conditions herein (whether verbally, text message or in writing), for any cancellation of service by the client or patient for whatever reason (whether before or during or after the commencement of service), we reserve the right to charge, set-off and/or claim (as the case may be) from the client a fee of 30% of the total service fee. In addition to that, the administrative charges and the applicable taxes shall remain payable by the client in full. The balance (if any) will be refunded accordingly.  For avoidance of doubt, such refund (if any) is only applicable in the event that we decide not to exercise our rights in Clause 23 below.');
         $this->termAndConditionAlign1('22.','If there is a need to change the type of service or any request for a change of Personnel after a particular Personnel had been assigned to the client / patient, the client shall submit the request in writing (letter or email) for our consideration, and subject to Personnel availability. A surcharge of RM180 is applicable.');
-        $this->termAndConditionAlign1('23.','All payments made are non-refundable. Except as provided expressly herein, there shall be no refunds whatsoever for any early termination or cancellation of the service. Any refund is subject to our sole discretion and subject to any such terms as we may impose.');
+        
+	$this->SetFont('','U'); //underline
+        $this->Cell(0,10,'Refund',0,1,'C',false); //center
+    	$this->Ln(4);
+        $this->SetFont('Times','',12); //remove the under line
+
+
+
+	$this->termAndConditionAlign1('23.','All payments made are non-refundable. For avoidance of doubt, there shall be no refunds whatsoever for any early termination or any cancellation of the service (whether or not the service has started or otherwise). Any refund is subject to our sole discretion and subject to any such terms as we may impose.');
         $this->termAndConditionAlign1('24.','In the event of death of a patient / client (as the case may be) before the end of the service period, any request for a partial refund requires the following:');
         
         $this->termAndConditionAlign2('a)','Letter from the client: via email or send by hand.');
@@ -682,8 +690,9 @@ class PDF extends FPDF
         $this->termAndConditionAlign1('43.','If any provision under these terms and conditions is held invalid, unenforceable or illegal for any reason, the remaining of the provisions of the terms and conditions herein shall remain otherwise in full force apart from such provision which shall be deemed deleted.');
         $this->termAndConditionAlign1('44.','We may at any time issue any notice, or modify or amend or vary the terms and conditions herein ("variation") by posting a copy of such notice or variation on our website (www.mnalfalah.com.my) or by email or by post. The client shall be deemed to have acknowledged receipt, understood and agreed to any such notice or variation by the client\'s decision to continue using the service following the date in which the notice or the variation is posted on the website or sent via email or sent by post.');
         $this->termAndConditionAlign1('45.','These terms and conditions shall be subjected to and construed in accordance with the laws of Malaysia and parties hereby submit to the exclusive jurisdiction of the courts in Malaysia.');
-        
-        
+        $this->termAndConditionAlign1('46.','The client shall be deemed to have read and agreed to the quotation and the terms and conditions herein, upon payment (or any part payment, as the case may be) or upon the start of the service, notwithstanding whether the Letter of Acceptance below is signed or otherwise.');
+        $this->termAndConditionAlign1('47.','The client and/or patient is strictly prohibited from any direct dealing or any external arrangement for the service (“Direct Dealing”) with any of the Personnel for or in connection with the service or any other similar arrangements, without our prior written consent. Upon discovery of any such Direct Dealing, we reserve the right to claim for the full amount for such service (including but not limited to the administrative charges and the applicable taxes) as if it is arranged by us, notwithstanding any payment made by the client to the Personnel in relation to the Direct Dealing.');
+
     }
     
     function paymentInfo(){

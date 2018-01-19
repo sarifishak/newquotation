@@ -13,7 +13,7 @@
 
     $importField = new ImportFieldManager();
     $importField->initImportFieldManager();
-    $importField->deleteQuotationById($id);
+    $importField->cancelCloseDealQuotationById($id);
     header('Location: marketing.php');
 
 ?>      

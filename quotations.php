@@ -254,6 +254,43 @@ CREATE TABLE quotations(
     return $quotations_list;
 
   }
+
+ function selectCloseDealByQuotationDate($selectDate){
+
+    $debugMsg = "";
+
+    $dbm = new DBManager();
+    $conn = $dbm->getConnection();
+
+    
+    //$selectDate = '2016-9-9';
+
+    $sql_stmt = "SELECT * FROM quotations WHERE MONTH(quotationDate) = MONTH(?) AND YEAR(quotationDate) = YEAR(?) AND status = ? order by id desc";
+    $debugMsg = $debugMsg."<br>selectByQuotationDate:".$sql_stmt."<br>";
+
+    $stmt = $conn->prepare($sql_stmt);
+    $stmt->execute(array($selectDate,$selectDate,1));
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $row_count = $stmt->rowCount();
+
+    //echo 'Row count='. $row_count;
+
+    //create an empty array that will eventually contain the list of users
+    $quotations_list=array();
+
+    //iterate each row in retval
+    foreach($rows as $dbfield) {
+      //instantiate a user object
+      $quotations_list[] = $this->getAllFieldData($dbfield);
+    }
+
+    $this->debugMsg = $debugMsg;
+    $this->quotations_list = $quotations_list;
+    $this->row_count = $row_count;
+
+    return $quotations_list;
+
+  }
   
   function selectById(){
   	
@@ -338,6 +375,42 @@ CREATE TABLE quotations(
     return $retval;
     
   }   // function deleteQuotationById() {
+
+  function closeDealQuotationById() {
+
+    $dbm = new DBManager();
+    $conn = $dbm->getConnection();
+
+    $sql_stmt = "UPDATE  quotations SET status=1 WHERE id=?";
+    $debugMsg = "<br>deleteQuotationById:".$sql_stmt."<br>";
+
+    $stmt = $conn->prepare($sql_stmt);
+    $retval = $stmt->execute(array($this->id));
+
+    //check if SQL query is successful
+    $this->debugMsg = $debugMsg;
+    return $retval;
+
+  }   // function closeDealQuotationById() {
+
+  function cancelCloseDealQuotationById() {
+
+    $dbm = new DBManager();
+    $conn = $dbm->getConnection();
+
+    $sql_stmt = "UPDATE  quotations SET status=0 WHERE id=?";
+    $debugMsg = "<br>deleteQuotationById:".$sql_stmt."<br>";
+
+    $stmt = $conn->prepare($sql_stmt);
+    $retval = $stmt->execute(array($this->id));
+
+    //check if SQL query is successful
+    $this->debugMsg = $debugMsg;
+    return $retval;
+
+  }   // function cancelCloseDealQuotationById() {
+
+
   
   function showDebug() {
     echo $this->debugMsg;

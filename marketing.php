@@ -71,6 +71,7 @@
     <p>List of inquiry:<?php echo '<button onclick="popupCenter(\'newInquiry.php?id=\',0,\'Import New\');">Import New</button>';?>
                        <?php echo '<button onclick="popupReport(\'monthlyReport.php?currentDate=\',0,\'Monthly Report\');">Monthly Report</button>';?>
                        <input type="text" id="currentDate" name="currentDate">
+                       <?php echo '<button onclick="popupReport(\'monthlyCloseDealReport.php?currentDate=\',0,\'Monthly Close Deal Report\');">Monthly Close Deal Report</button>';?>
                        <!-- <?php echo '<button onclick="popupCenter(\'quotationPdfOut.php?id=\',0,\'View Quotation\');">Test New Quotation</button>';?>   -->
                        <!-- <?php echo '<button onclick="popupCenter(\'newQuotation.php?id=\',0,\'View Quotation\');">Test New Quotation</button>';?> --></p>
     <table border='1'>
@@ -91,6 +92,7 @@
         echo 'Patient: '.$inquiry->patientData->firstName.'&nbsp;'.$inquiry->patientData->lastName.'</br>';
         echo 'Address: '.$inquiry->customerData->address.'&nbsp;'.$inquiry->customerData->city.'&nbsp;'.$inquiry->customerData->postcode.'&nbsp;'.$inquiry->customerData->state.'</br>';
         echo 'Email: '.$inquiry->customerData->email.'</br>';
+        echo 'Status: '.$inquiry->status.'</br>';
         echo 'Notes: ';
              foreach($inquiry->noteListData as $quotationNote) {
              	echo $quotationNote->note.'</br>';
@@ -99,7 +101,11 @@
         echo '<td><button onclick="popupCenter(\'quotationPdfOut.php?id=\','.$inquiry->id.',\'View Quotation\');">View Quotation</button><br/>';
         echo '    <button onclick="popupCenter(\'newQuotation.php?id=\','.$inquiry->id.',\'Create Quotation\');">Create Quotation</button><br/>';
         echo '    <button onclick="popupCenter(\'editInquiryPage1.php?id=\','.$inquiry->id.',\'Edit Quotation\');">Edit Quotation</button><br/>';
-        echo '    <button onclick="popupCenterConfirm(\'deleteInquiryPage1.php?id=\','.$inquiry->id.',\'Delete Quotation\');">Delete Quotation</button></td>';
+        echo '    <button onclick="popupCenterConfirm(\'deleteInquiryPage1.php?id=\','.$inquiry->id.',\'Delete Quotation\');">Delete Quotation</button><br/>';
+        if ($inquiry->status == '1')
+            echo '    <button onclick="popupCenterConfirm(\'cancelDealPage.php?id=\','.$inquiry->id.',\'Cancel Deal this Quotation\');">Cancel Deal</button></td>';
+        else 
+            echo '    <button onclick="popupCenterConfirm(\'closeDealPage.php?id=\','.$inquiry->id.',\'Close Deal this Quotation\');">Close Deal</button></td>';
         echo '</tr>';
       }
     ?>

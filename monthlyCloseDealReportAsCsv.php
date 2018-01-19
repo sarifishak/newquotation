@@ -16,7 +16,7 @@
   fputcsv($output, array('Quotation Date', 'Caller Name', 'Tel No','Email','Location','Case Description'));
   
   $quotations = new Quotations();
-  $quotations_list= $quotations->selectByQuotationDate($_REQUEST['currentDate']);
+  $quotations_list= $quotations->selectCloseDealByQuotationDate($_REQUEST['currentDate']);
   if($quotations->row_count === 0 ){
       fputcsv($output, array(' ', ' ', ' ',' ',' ',' '));
   } else {

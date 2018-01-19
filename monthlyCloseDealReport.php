@@ -8,10 +8,10 @@
 ?>
 <html>
   <head>
-    <title>Monthly Report</title>
+    <title>Monthly Close Deal Report</title>
   </head>
   <body>
-    <p>Monthly Report.<a href="monthlyReportAsCsv.php?currentDate=<?php echo $_REQUEST['currentDate'] ?>">download</a></p>
+    <p>Monthly Close Deal Report.<a href="monthlyCloseDealReportAsCsv.php?currentDate=<?php echo $_REQUEST['currentDate'] ?>">download</a></p>
     <table border='1'>
       <tr>
         <td>Quotation Date</td>
@@ -20,12 +20,18 @@
         <td>Email</td>
         <td>Location</td>
         <td>Case Description</td>
-        
+        <td>Fee For</td>
+        <td>Basic Charge</td>
+        <td>Mileage</td>
+        <td>Admin</td>
+        <td>Additional Charge</td>
+        <td>Gst</td>
+        <td>Total</td>        
       </tr>
     <?php 
       //refer to user.php for the implementation of the class User 
       $quotations = new Quotations();
-      $quotations_list= $quotations->selectByQuotationDate($_REQUEST['currentDate']);
+      $quotations_list= $quotations->selectCloseDealByQuotationDate($_REQUEST['currentDate']);
       if($quotations->row_count === 0 ){
           echo '<tr><td colSpan=6>No record';
           //$quotations->showDebug();
@@ -35,6 +41,8 @@
           //$quotation_list = (new Quotations())->selectByQuotationDate($_REQUEST['currentDate']);
     
           foreach($quotations_list as $quotation) {
+            $feeFor = $quotation->feeFor .' fees for '.$quotation->hourPerDay.'-hour care @ RM '.$quotation->basicCharge.' x '.$quotation->chargeDays.' days';
+            $basicCharge = $quotation->basicCharge * $quotation->chargeDays;
             echo '<tr>';
             echo '<td>'.$quotation->quotationDate.'</td>';
             echo '<td>'.$quotation->customerData->firstName.'</td>';
@@ -46,6 +54,13 @@
                 $allNotes = $allNotes.$quotationNote->note;
             }
             echo '<td>'.$allNotes.'</td>';
+            echo '<td>'.$feeFor.'</td>';
+            echo '<td>RM'.$basicCharge.'</td>';
+            echo '<td>RM'.$quotation->mileage.'</td>';
+            echo '<td>RM'.$quotation->adminFee.'</td>';
+            echo '<td>RM'.$quotation->additionalCharge.'</td>';
+            echo '<td>RM'.$quotation->gst.'</td>';
+            echo '<td>RM'.$quotation->totalAmount.'</td>';
             echo '</tr>';
           }      
       
