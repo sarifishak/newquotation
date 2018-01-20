@@ -145,6 +145,8 @@
       $importFieldManager->setInputDataByName("amountDue",$_REQUEST['amountDue']);
       $importFieldManager->setInputDataByName("statusPaid",$_REQUEST['statusPaid']);
       $importFieldManager->setInputDataByName("status",$_REQUEST['status']);
+      $importFieldManager->setInputDataByName("locumFees",$_REQUEST['locumFees']);
+      
       
       
       

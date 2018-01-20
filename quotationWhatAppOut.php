@@ -29,6 +29,8 @@
     $servicesStartDate = $quotations->startDate;
     $servicesStartTime = $quotations->startTimeDaily;
     $totalDays = $quotations->chargeDays;
+    $locumFees = $quotations->locumFees;
+    
     
     if($totalDays < 20 ) {
         $quotationSummary = $quotations->hourPerDay.'-hour care / '.$quotations->dayPerWeek.' days a week';
@@ -48,6 +50,7 @@
 </br>Services:<?php echo strtoupper($quotationSummary); ?>
 </br>Start services:<?php echo $servicesStartDate; ?>
 </br>Start time:<?php echo $servicesStartTime; ?>
+</br>Locum Fees:<?php echo $locumFees; ?>
 </br>Patient Name:<?php echo $patientName; ?>
 </br>Patient I/C No:<?php echo $patientIC; ?>
 </br>Patient Address:<?php echo $patientAddress; ?>

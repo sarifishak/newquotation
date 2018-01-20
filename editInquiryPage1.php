@@ -313,6 +313,10 @@
                  <span>status</span>
                  <input id="status" type="text" name="status"  value="<?php echo $importField->getInputDataByName('status');?>">
                </label>
+               <label>
+                 <span>Locum Fees</span>
+                 <input id="locumFees" type="text" name="locumFees"  value="<?php echo $importField->getInputDataByName('locumFees');?>">
+               </label>
             </div>
 
 
