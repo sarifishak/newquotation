@@ -104,6 +104,13 @@
 
                 <input id="name" type="text" name="name" value="<?php echo $importField->getInputDataByName('Name');?>">
 
+              </label>
+              <label>
+
+                <span>Code</span>
+
+                <input id="contactCode" type="text" name="contactCode" value="<?php echo $importField->getInputDataByName('contactCode');?>">
+
               </label><!-- 
 
                --><label>

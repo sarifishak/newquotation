@@ -37,6 +37,7 @@
   } else if($importStage === 'second') {
       
       $name = $_REQUEST['name'];
+      $contactCode = $_REQUEST['contactCode'];
       $ic = $_REQUEST['ic'];
       $address = $_REQUEST['address'];
       $mail = $_REQUEST['mail'];
@@ -51,6 +52,7 @@
       $importFieldManager->initImportFieldManager();
       
       $importFieldManager->setInputDataByName("Name",$name);
+      $importFieldManager->setInputDataByName("contactCode",$contactCode);
       $importFieldManager->setInputDataByName("I/C No.",$ic);
       $importFieldManager->setInputDataByName("Address",$address);
       $importFieldManager->setInputDataByName("E-Mail",$mail);
@@ -60,6 +62,7 @@
       $importFieldManager->setInputDataByName("Patient I/C No.",$patientic);
       $importFieldManager->setInputDataByName("Patient Address",$patientaddress);
       $importFieldManager->setInputDataByName("Problem",$problem);
+      
       
       //echo "<br/>Berikut adalah data terbaru....<br/>";
       //echo $importFieldManager->toString();
@@ -83,6 +86,7 @@
       $patientId = $_REQUEST['patientId'];
       
       $name = $_REQUEST['name'];
+      $contactCode = $_REQUEST['contactCode'];
       $ic = $_REQUEST['ic'];
       $address = $_REQUEST['address'];
       $mail = $_REQUEST['mail'];
@@ -100,6 +104,7 @@
       $importFieldManager->setInputDataByName("customerId",$customerId);
       $importFieldManager->setInputDataByName("patientId",$patientId);
       $importFieldManager->setInputDataByName("Name",$name);
+      $importFieldManager->setInputDataByName("contactCode",$contactCode);
       $importFieldManager->setInputDataByName("I/C No.",$ic);
       $importFieldManager->setInputDataByName("Address",$address);
       $importFieldManager->setInputDataByName("E-Mail",$mail);
@@ -150,6 +155,9 @@
       $user = $_SESSION['current_user'];
       $retval = $importFieldManager->updateQuotationInquiry($user->id);
       
+      //$importFieldManager->showDebug();
+      
+      
       if(! $retval ){
         $importFieldManager->showDebug();
       } else {
@@ -157,6 +165,7 @@
         //echo "<br/>Update successfull. Please close this and refresh the main page....";
         header('Location: quotationPdfOut.php?id='.$id);
       }
+      
       
   } else {
     echo "<br/>Please contact your programmer, he just messed up with his code!!!<br/>";    

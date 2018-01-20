@@ -23,10 +23,13 @@ CREATE TABLE contacts(
     createdId int
 );
 
+ALTER TABLE `contacts` ADD `contactCode` VARCHAR(100) NOT NULL AFTER `id`;
+
 */
   
   var $id;
   var $contactTypeId;
+  var $contactCode;
   var $firstName;
   var $lastName;
   var $ic;
@@ -60,6 +63,7 @@ CREATE TABLE contacts(
       //initialize fields of user object with the columns retrieved from the query
       $contact->id = $dbfield['id'];
       $contact->contactTypeId = $dbfield['contactTypeId'];
+      $contact->contactCode = $dbfield['contactCode'];
       $contact->firstName = $dbfield['firstName'];
       $contact->lastName = $dbfield['lastName'];
       $contact->ic = $dbfield['ic'];
@@ -100,6 +104,7 @@ CREATE TABLE contacts(
       //initialize fields of user object with the columns retrieved from the query
       $this->id = $dbfield['id'];
       $this->contactTypeId = $dbfield['contactTypeId'];
+      $this->contactCode = $dbfield['contactCode'];
       $this->firstName = $dbfield['firstName'];
       $this->lastName = $dbfield['lastName'];
       $this->ic = $dbfield['ic'];

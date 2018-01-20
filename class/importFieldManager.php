@@ -15,7 +15,7 @@ class ImportFieldManager{
   
   // list of valid input parameter
   //var $validParamInputs = array( "Name: ", "I/C No.: ", "Address: ", "E-Mail: ", "Contact No.1: ","Contact No.2: ","Patient Name: ","Patient I/C No.: ","Patient Address: ","Problem: ");
-  var $validParamInputs = array( "Name", "I/C No.", "Address", "E-Mail", "Contact No.1","Contact No.2",
+  var $validParamInputs = array( "Name", "contactCode","I/C No.", "Address", "E-Mail", "Contact No.1","Contact No.2",
                                  "Patient Name","Patient I/C No.","Patient Address","Problem","hoursPerDay","daysPerWeek","adminFees",
                                  "id","quotationNo","chargeMode","feeFor","physiotherapy","chargeDays",
                                  "customerId","patientId","quotationDate",
@@ -347,6 +347,7 @@ class ImportFieldManager{
     
     $this->setInputDataByName("id",$id);
     $this->setInputDataByName("Name",$quotations->customerData->firstName);
+    $this->setInputDataByName("contactCode",$quotations->customerData->contactCode);
     $this->setInputDataByName("I/C No.",$quotations->customerData->ic);
     $this->setInputDataByName("Address",$quotations->customerData->address);
     $this->setInputDataByName("E-Mail",$quotations->customerData->email);
@@ -437,12 +438,12 @@ class ImportFieldManager{
                   ",office='".mysqli_real_escape_string($this->getInputDataByName("Contact No.2"))."'".
                   " WHERE id=".mysqli_real_escape_string($this->getInputDataByName("customerId")).";";
       */
-      $sql_stmt = "UPDATE contacts SET firstName=?,ic=?,address=?,email=?,mobile=?,office=? WHERE id=?;";
+      $sql_stmt = "UPDATE contacts SET contactCode=?,firstName=?,ic=?,address=?,email=?,mobile=?,office=? WHERE id=?;";
       
-      $debugMsg = $debugMsg."<br>Update Customer data:".$sql_stmt."<br>";
+      $debugMsg = $debugMsg."<br>Update Customer data:".$sql_stmt."<br>contactCode=".$this->getInputDataByName("contactCode").".customerId=".$this->getInputDataByName("customerId");
       
       $stmt = $conn->prepare($sql_stmt);
-      $retval = $stmt->execute(array($this->getInputDataByName("Name"),$this->getInputDataByName("I/C No."),
+      $retval = $stmt->execute(array($this->getInputDataByName("contactCode"),$this->getInputDataByName("Name"),$this->getInputDataByName("I/C No."),
                 $this->getInputDataByName("Address"),$this->getInputDataByName("E-Mail"),$this->getInputDataByName("Contact No.1"),
                 $this->getInputDataByName("Contact No.2"),$this->getInputDataByName("customerId")
                 ));
