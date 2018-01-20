@@ -28,6 +28,11 @@
     $patientAddress = $quotations->patientData->address.' '.$quotations->patientData->city.' '.$quotations->patientData->postcode.' '.$quotations->patientData->state;
     $servicesStartDate = $quotations->startDate;
     $servicesStartTime = $quotations->startTimeDaily;
+    
+    $newServicedate = new DateTime($servicesStartDate);
+    $newServicedateTime = new DateTime($servicesStartDate. ' ' .$servicesStartTime);
+
+    
     $totalDays = $quotations->chargeDays;
     $locumFees = $quotations->locumFees;
     
@@ -48,8 +53,8 @@
     <p>WhatApp Quotation</p>  
     <p>Code:<?php echo $customerCode; ?>
 </br>Services:<?php echo strtoupper($quotationSummary); ?>
-</br>Start services:<?php echo $servicesStartDate; ?>
-</br>Start time:<?php echo $servicesStartTime; ?>
+</br>Start services:<?php echo $newServicedate->format('dS M,Y'); ?>
+</br>Start time:<?php echo $newServicedateTime->format('g:ia'); ?>
 </br>Locum Fees:<?php echo $locumFees; ?>
 </br>Patient Name:<?php echo $patientName; ?>
 </br>Patient I/C No:<?php echo $patientIC; ?>
