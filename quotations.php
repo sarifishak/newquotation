@@ -47,6 +47,8 @@ CREATE TABLE quotations(
     createdId int
 );
 
+ALTER TABLE `quotations` ADD `locumFees` VARCHAR(100) NOT NULL AFTER `status`;
+
 */
   
   var $id;
@@ -81,6 +83,8 @@ CREATE TABLE quotations(
   var $amountDue;
   var $statusPaid;
   var $status;
+  
+  var $locumFees;
   
   var $createdDate;
   var $createdId;
@@ -132,6 +136,7 @@ CREATE TABLE quotations(
       $quotations->amountDue = $dbfield['amountDue'];
       $quotations->statusPaid = $dbfield['statusPaid'];
       $quotations->status = $dbfield['status'];
+      $quotations->locumFees = $dbfield['locumFees'];
       $quotations->createdDate = $dbfield['createdDate'];
       $quotations->createdId = $dbfield['createdId'];
       
@@ -338,6 +343,7 @@ CREATE TABLE quotations(
       $this->amountDue = $dbfield['amountDue'];
       $this->statusPaid = $dbfield['statusPaid'];
       $this->status = $dbfield['status'];
+      $this->locumFees = $dbfield['locumFees'];
       $this->createdDate = $dbfield['createdDate'];
       $this->createdId = $dbfield['createdId'];
       

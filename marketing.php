@@ -89,6 +89,7 @@
         echo '<td>Created Date:'.$inquiry->createdDate.'<br>';
         echo 'Quotation Date:'.$inquiry->quotationDate.'<br>';
         echo 'Customer: '.$inquiry->customerData->firstName.'&nbsp;'.$inquiry->customerData->lastName.'<br>';
+        echo 'Code: '.$inquiry->customerData->contactCode.'<br>';
         echo 'Patient: '.$inquiry->patientData->firstName.'&nbsp;'.$inquiry->patientData->lastName.'</br>';
         echo 'Address: '.$inquiry->customerData->address.'&nbsp;'.$inquiry->customerData->city.'&nbsp;'.$inquiry->customerData->postcode.'&nbsp;'.$inquiry->customerData->state.'</br>';
         echo 'Email: '.$inquiry->customerData->email.'</br>';
@@ -103,10 +104,11 @@
         echo '    <button onclick="popupCenter(\'editInquiryPage1.php?id=\','.$inquiry->id.',\'Edit Quotation\');">Edit Quotation</button><br/>';
         echo '    <button onclick="popupCenterConfirm(\'deleteInquiryPage1.php?id=\','.$inquiry->id.',\'Delete Quotation\');">Delete Quotation</button><br/>';
         if ($inquiry->status == '1')
-            echo '    <button onclick="popupCenterConfirm(\'cancelDealPage.php?id=\','.$inquiry->id.',\'Cancel Deal this Quotation\');">Cancel Deal</button></td>';
+            echo '    <button onclick="popupCenterConfirm(\'cancelDealPage.php?id=\','.$inquiry->id.',\'Cancel Deal this Quotation\');">Cancel Deal</button>';
         else 
-            echo '    <button onclick="popupCenterConfirm(\'closeDealPage.php?id=\','.$inquiry->id.',\'Close Deal this Quotation\');">Close Deal</button></td>';
-        echo '</tr>';
+            echo '    <button onclick="popupCenterConfirm(\'closeDealPage.php?id=\','.$inquiry->id.',\'Close Deal this Quotation\');">Close Deal</button>';
+        echo '<br/><button onclick="popupCenter(\'quotationWhatAppOut.php?id=\','.$inquiry->id.',\'WhatApp Quotation\');">WhatApp</button>';
+        echo '</td></tr>';
       }
     ?>
     </table> 
