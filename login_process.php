@@ -17,6 +17,6 @@
   }else{//invalid username and password
     echo "Invalid username/password.  Click <a href='login.php'>[here]</a> to login again.<br>";
     echo "<br>";
-    echo "You may also click <a href='debug.php'>[here]</a> to see the list of usernames and passwords.<br>";
+    //echo "You may also click <a href='debug.php'>[here]</a> to see the list of usernames and passwords.<br>";
   }
 ?>
