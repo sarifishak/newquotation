@@ -48,6 +48,7 @@ CREATE TABLE quotations(
 );
 
 ALTER TABLE `quotations` ADD `locumFees` VARCHAR(100) NOT NULL AFTER `status`;
+ALTER TABLE `quotations` ADD `subTotalAmount` double default 0 AFTER `totalAmount`;
 
 */
   
@@ -79,6 +80,7 @@ ALTER TABLE `quotations` ADD `locumFees` VARCHAR(100) NOT NULL AFTER `status`;
   var $gst;
   var $discount;
   var $totalAmount;
+  var $subTotalAmount;
   var $totalPaid;
   var $amountDue;
   var $statusPaid;
@@ -132,6 +134,8 @@ ALTER TABLE `quotations` ADD `locumFees` VARCHAR(100) NOT NULL AFTER `status`;
       $quotations->gst = $dbfield['gst'];
       $quotations->discount = $dbfield['discount'];
       $quotations->totalAmount = $dbfield['totalAmount'];
+      $quotations->subTotalAmount = $dbfield['subTotalAmount'];
+      
       $quotations->totalPaid = $dbfield['totalPaid'];
       $quotations->amountDue = $dbfield['amountDue'];
       $quotations->statusPaid = $dbfield['statusPaid'];
@@ -339,6 +343,8 @@ ALTER TABLE `quotations` ADD `locumFees` VARCHAR(100) NOT NULL AFTER `status`;
       $this->gst = $dbfield['gst'];
       $this->discount = $dbfield['discount'];
       $this->totalAmount = $dbfield['totalAmount'];
+      $this->subTotalAmount = $dbfield['subTotalAmount'];
+      
       $this->totalPaid = $dbfield['totalPaid'];
       $this->amountDue = $dbfield['amountDue'];
       $this->statusPaid = $dbfield['statusPaid'];

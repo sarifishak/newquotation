@@ -290,7 +290,7 @@ class PDF extends FPDF
     }
     
     function chargePage($title,$patientName, $patientIC, $patientAddress,$hourPerDay,$basicCharge,
-                        $startDate,$endDate,$mileage,$adminFee,$gst,$totalAmount,$intervalDays,$feeFor,
+                        $startDate,$endDate,$mileage,$adminFee,$gst,$totalAmount,$subTotalAmount,$intervalDays,$feeFor,
                         $physiotherapy,$quotationSummary,$additionalCharge,
                         $nurseVisit,$doktorVisit,$physioDays,$nurseVisitDays,$doctorVisitDays) {
     
@@ -418,18 +418,36 @@ class PDF extends FPDF
         	$this->SetFont('Times','',12);
         	$this->Ln();
         	
-        	//d) gst
-        	$this->Cell($firstColumnSize,$lineSpace,'d) GST for Admin Fees and Mileage','L');
-        	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'d) GST @ RM '.$gst,'R');
-        	$this->SetFont('Times','',12);
-        	$this->Ln();
+        	
         	
         	//e) Additional Charge
         	if($additionalCharge > 0) {
-            	$this->Cell($firstColumnSize,$lineSpace,'e) Additional Charge','L');
-            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'e) Additional Charge @ RM '.$additionalCharge,'R');
+            	$this->Cell($firstColumnSize,$lineSpace,'d) Additional Charge','L');
+            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'d) Additional Charge @ RM '.$additionalCharge,'R');
+            	$this->SetFont('Times','',12);
+            	$this->Ln();
+            	
+            	$this->Cell($firstColumnSize,$lineSpace,'e) SubTotal','L');
+            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'e) SubTotal @ RM '.$subTotalAmount,'R');
+            	$this->SetFont('Times','',12);
+            	$this->Ln();
+            	
+            	$this->Cell($firstColumnSize,$lineSpace,'f) GST','L');
+            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'f) GST @ RM '.$gst,'R');
             	$this->SetFont('Times','',12);
             	$this->Ln();    
+        	} else {
+        	    
+        	    $this->Cell($firstColumnSize,$lineSpace,'d) SubTotal','L');
+            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'d) SubTotal @ RM '.$subTotalAmount,'R');
+            	$this->SetFont('Times','',12);
+            	$this->Ln();
+            	
+        	    //d) gst
+            	$this->Cell($firstColumnSize,$lineSpace,'e) GST','L');
+            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'e) GST @ RM '.$gst,'R');
+            	$this->SetFont('Times','',12);
+            	$this->Ln();
         	}
         	
         	
@@ -805,10 +823,10 @@ class PDF extends FPDF
     $pdf->quotationPage($quotations->quotationNo,$quotations->quotationDate,$customerName,$customerAddress,$quotations->customerData->email,
                         $quotations->customerData->mobile,$patientName,$requestNote,$quotationSummary,
                         $quotations->feeFor,$quotations->patientData->address,$quotations->patientData->ic);// $quotationDate,$customerName,$customerAddress,$customerEmail,$customerContact,$patientName,$requestNote,$quotationSummary
-    
+    //$quotations->subTotalAmount
     $pdf->chargePage('CHARGES FOR HOME NURSING SERVICE',$patientName,$quotations->patientData->ic,$quotations->patientData->address,
                      $quotations->hourPerDay,$quotations->basicCharge,$quotations->startDate,$quotations->endDate,$quotations->mileage,
-                     $quotations->adminFee,$quotations->gst,$quotations->totalAmount,$totalDays,$quotations->feeFor,
+                     $quotations->adminFee,$quotations->gst,$quotations->totalAmount,$quotations->subTotalAmount,$totalDays,$quotations->feeFor,
                      $quotations->physiotherapy,$quotationSummary,$quotations->additionalCharge,
                      $quotations->nurseVisit,$quotations->doktorVisit,$quotations->physioDays,$quotations->nurseVisitDays,$quotations->doctorVisitDays);
     

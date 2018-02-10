@@ -163,6 +163,7 @@
         <td>additionalCharge</td>
         <td>gst</td>
         <td>discount</td>
+        <td>subTotalAmount</td>
         <td>totalAmount</td>
         <td>totalPaid</td>
         <td>amountDue</td>
@@ -205,6 +206,7 @@
         echo '<td>'.$contactType->additionalCharge.'</td>';
         echo '<td>'.$contactType->gst.'</td>';
         echo '<td>'.$contactType->discount.'</td>';
+        echo '<td>'.$contactType->subTotalAmount.'</td>';
         echo '<td>'.$contactType->totalAmount.'</td>';
         echo '<td>'.$contactType->totalPaid.'</td>';
         echo '<td>'.$contactType->amountDue.'</td>';

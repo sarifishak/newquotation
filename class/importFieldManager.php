@@ -526,16 +526,16 @@ class ImportFieldManager{
       $chargeDoctor = $this->getDoctorCharging($this->getInputDataByName("doktorVisit"),$this->getInputDataByName("doctorVisitDays"));
       
       if($totalDays > 0) {
-        $gst = ($this->getInputDataByName("adminFees")*0.06) + ($this->getInputDataByName("mileage")*$totalDays*0.06);
+        //$gst = ($this->getInputDataByName("adminFees")*0.06) + ($this->getInputDataByName("mileage")*$totalDays*0.06);
         $chargeCareGiver = ($totalDays * $this->getInputDataByName("basicCharge")) + $this->getInputDataByName("adminFees") + 
                             ($totalDays * $this->getInputDataByName("mileage"))+  $this->getInputDataByName("additionalCharge");
       } else {
-        $gst = 0;
+        //$gst = 0;
         $chargeCareGiver = 0;
       }
-      
-      $totalCharge = $chargeCareGiver + $gst +
-                     $chargePhysio + $chargeNurse + $chargeDoctor;
+      $subTotalAmount = $chargeCareGiver + $chargePhysio + $chargeNurse + $chargeDoctor;
+      $gst = $subTotalAmount*0.06;
+      $totalCharge = $subTotalAmount + $gst;
       /*
       $sql_stmt = "UPDATE quotations SET ".
                   " hourPerDay='".mysqli_real_escape_string($this->getInputDataByName("hoursPerDay"))."'".
@@ -572,7 +572,7 @@ class ImportFieldManager{
                   ",feeFor=?,physiotherapy=?,nurseVisit=?,doktorVisit=?,nurseVisitDays=?,doctorVisitDays=?".
                   ",physioDays=?,chargeDays=?,quotationDate=?,basicCharge=?,startTimeDaily=?".
                   ",endTimeDaily=?,startDate=?,endDate=?,mileage=?,additionalCharge=?,gst=?".
-                  ",discount=?,totalAmount=?,totalPaid=?,amountDue=?,statusPaid=?,status=?,locumFees=? WHERE id=?;";
+                  ",discount=?,totalAmount=?,subTotalAmount=?,totalPaid=?,amountDue=?,statusPaid=?,status=?,locumFees=? WHERE id=?;";
       
       $debugMsg = $debugMsg."<br>Update  Quotation data:".$sql_stmt."<br>";
       
@@ -586,7 +586,7 @@ class ImportFieldManager{
                 $this->getInputDataByName("basicCharge"),$this->getInputDataByName("startTimeDaily"),$this->getInputDataByName("endTimeDaily"),
                 $this->getInputDataByName("startDate"),$this->getInputDataByName("endDate"),$this->getInputDataByName("mileage"),
                 $this->getInputDataByName("additionalCharge"),$gst,$this->getInputDataByName("discount"),
-                $totalCharge,$this->getInputDataByName("totalPaid"),$this->getInputDataByName("amountDue"),
+                $totalCharge,$subTotalAmount,$this->getInputDataByName("totalPaid"),$this->getInputDataByName("amountDue"),
                 $this->getInputDataByName("statusPaid"),$this->getInputDataByName("status"),$this->getInputDataByName("locumFees"),$this->getInputDataByName("id")
                 ));
   
