@@ -395,7 +395,7 @@ class PDF extends FPDF
         	
         	//a) 08-hour care @ RM 160 x 20 days
         	$this->SetFont('','BI');
-        	$this->Cell($firstColumnSize,$lineSpace,'a) '.$hourPerDay.'-hour care @ RM '.$basicCharge.' x '.$intervalDays.' days','L');
+        	$this->Cell($firstColumnSize,$lineSpace,'a) '.$hourPerDay.'-hour care @ ('.$hourPerDay.' X RM '.($basicCharge/$hourPerDay).') x '.$intervalDays.' days','L');
         	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'a) '.$hourPerDay.'-hour care @ RM '.$basicCharge*$intervalDays,'R');
         	$this->SetFont('Times','',12);
         	$this->Ln();
