@@ -68,6 +68,7 @@
     $mileage = $quotations->mileage;
     $adminFee = $quotations->adminFee;
     $gst = $quotations->gst;
+    $subTotalAmount = $quotations->subTotalAmount;
     $totalAmount = $quotations->totalAmount;
     $totalDays = $quotations->chargeDays;
     $feeFor = $quotations->feeFor;
@@ -101,20 +102,23 @@
     $firstLine = 'a) '.$hourPerDay.'-hour care @ RM '.$basicCharge.' x '.$intervalDays.' days : RM '.$basicCharge*$intervalDays; 
     $secondLine = 'b) Mileage @ RM'.$mileage.' x '.$intervalDays.' days : RM '.$mileage*$intervalDays;
     $thirdLine = 'c) Admin Fees : RM'.$adminFee;
-    $fourthLine = 'd) GST for Admin Fees and Mileage : RM '.$gst;
+
     if($additionalCharge > 0) {
-        $fifthLine = 'e) Additional Charge RM '.$additionalCharge;
+        $fifthLine = 'd) Additional Charge RM '.$additionalCharge;
     }
+    $subtotalLine = 'Sub total : RM '.$subTotalAmount;
+    $gstLine = 'GST  : RM '.$gst;
     $totalLine = 'TOTAL : RM '.$totalAmount;
     ?>
     </br><?php echo $titleFeeFor; ?>
     </br><?php echo $firstLine; ?>
     </br><?php echo $secondLine; ?>
     </br><?php echo $thirdLine; ?>
-    </br><?php echo $fourthLine; ?>
     <?php if($additionalCharge > 0) { ?>
     </br><?php echo $fifthLine; ?>
     <?php } ?>
+    </br><?php echo $subtotalLine; ?>
+    </br><?php echo $gstLine; ?>
     </br><?php echo $totalLine; ?>
     
 
