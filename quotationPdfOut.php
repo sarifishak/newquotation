@@ -324,7 +324,7 @@ class PDF extends FPDF
         	$this->SetFont('','B');
         	$this->Cell($firstColumnSize,$lineSpace,'Doctor House call','L');
         	$this->SetFont('Times','',12);
-        	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'RM380 X '.$doctorVisitDays.' days : RM '.($doctorVisitDays*380),'R');
+        	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'RM380 X '.$doctorVisitDays.' days : RM'.($doctorVisitDays*380),'R');
         	$this->SetFont('Times','',12);
         	$this->Ln();
         	
@@ -343,14 +343,14 @@ class PDF extends FPDF
     	if($nurseVisit === 'yes') {
         	$this->SetFont('','B');
         	$this->Cell($firstColumnSize,$lineSpace,'FIRST VISIT BY NURSE','L');
-        	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'1st Session: RM 250','R');
+        	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'1st Session: RM250','R');
         	$this->SetFont('Times','',12);
         	$this->Ln();
         	
         	$this->Cell($firstColumnSize,$lineSpace,'First Visit, Assesment, Dressing','L');
         	$this->Cell(4,$lineSpace,' ','R');
         	if(($nurseVisitDays-1) > 0) {    
-        	    $this->Cell(0,$lineSpace,'Subsequent Visits RM220 X '.($nurseVisitDays-1).' days: RM '.(($nurseVisitDays-1)*220),'R');
+        	    $this->Cell(0,$lineSpace,'Subsequent Visits RM220 X '.($nurseVisitDays-1).' days: RM'.(($nurseVisitDays-1)*220),'R');
         	} else {
         	    $this->Cell(0,$lineSpace,'Subsequent Visits RM220','R');
         	}
@@ -395,8 +395,8 @@ class PDF extends FPDF
         	
         	//a) 08-hour care @ RM 160 x 20 days
         	$this->SetFont('','BI');
-        	$this->Cell($firstColumnSize,$lineSpace,'a) '.$hourPerDay.'-hour care @ ('.$hourPerDay.' X RM '.($basicCharge/$hourPerDay).') x '.$intervalDays.' days','L');
-        	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'a) '.$hourPerDay.'-hour care @ RM '.$basicCharge*$intervalDays,'R');
+        	$this->Cell($firstColumnSize,$lineSpace,'a) '.$hourPerDay.'-hour care @ ('.$hourPerDay.' X RM'.($basicCharge/$hourPerDay).') x '.$intervalDays.' days','L');
+        	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'a) '.$hourPerDay.'-hour care @ RM'.$basicCharge*$intervalDays,'R');
         	$this->SetFont('Times','',12);
         	$this->Ln();
         	
@@ -408,13 +408,13 @@ class PDF extends FPDF
         	// b) Mileage @ RM300.00(+gst)
         	//$this->SetFont('','BI');
         	$this->Cell($firstColumnSize,$lineSpace,'b) Mileage @ RM'.$mileage.' x '.$intervalDays.' days','L');
-        	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'b) Mileage @ RM '.$mileage*$intervalDays,'R');
+        	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'b) Mileage @ RM'.$mileage*$intervalDays,'R');
         	$this->SetFont('Times','',12);
         	$this->Ln();
 
         	//c) Admin Fees @ RM200.00(+gst)/pa
         	$this->Cell($firstColumnSize,$lineSpace,'c) Admin Fees @ RM'.$adminFee,'L');
-        	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'c) Admin Fees @ RM '.$adminFee,'R');
+        	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'c) Admin Fees @ RM'.$adminFee,'R');
         	$this->SetFont('Times','',12);
         	$this->Ln();
         	
@@ -423,29 +423,29 @@ class PDF extends FPDF
         	//e) Additional Charge
         	if($additionalCharge > 0) {
             	$this->Cell($firstColumnSize,$lineSpace,'d) Additional Charge','L');
-            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'d) Additional Charge @ RM '.$additionalCharge,'R');
+            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'d) Additional Charge @ RM'.$additionalCharge,'R');
             	$this->SetFont('Times','',12);
             	$this->Ln();
             	
             	$this->Cell($firstColumnSize,$lineSpace,'e) SubTotal','L');
-            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'e) SubTotal @ RM '.$subTotalAmount,'R');
+            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'e) SubTotal @ RM'.$subTotalAmount,'R');
             	$this->SetFont('Times','',12);
             	$this->Ln();
             	
             	$this->Cell($firstColumnSize,$lineSpace,'f) GST','L');
-            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'f) GST @ RM '.$gst,'R');
+            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'f) GST @ RM'.$gst,'R');
             	$this->SetFont('Times','',12);
             	$this->Ln();    
         	} else {
         	    
         	    $this->Cell($firstColumnSize,$lineSpace,'d) SubTotal','L');
-            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'d) SubTotal @ RM '.$subTotalAmount,'R');
+            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'d) SubTotal @ RM'.$subTotalAmount,'R');
             	$this->SetFont('Times','',12);
             	$this->Ln();
             	
         	    //d) gst
             	$this->Cell($firstColumnSize,$lineSpace,'e) GST','L');
-            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'e) GST @ RM '.$gst,'R');
+            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'e) GST @ RM'.$gst,'R');
             	$this->SetFont('Times','',12);
             	$this->Ln();
         	}
@@ -457,12 +457,12 @@ class PDF extends FPDF
         	
         	// TOTAL @ RM 3,730
         	$this->Cell($firstColumnSize,$lineSpace,' ','L');
-        	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'TOTAL @ RM '.$totalAmount,'R');
+        	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'TOTAL @ RM'.$totalAmount,'R');
         	$this->SetFont('Times','',12);
         	$this->Ln();
         	
         	// Additional RM 100 for Weekend & Public Holidays
-        	$this->Cell($firstColumnSize,$lineSpace,'Additional RM 100 for Weekend','L');
+        	$this->Cell($firstColumnSize,$lineSpace,'Additional RM100 for Weekend','L');
         	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,' ','R');
         	$this->SetFont('Times','',12);
         	$this->Ln();
@@ -481,7 +481,7 @@ class PDF extends FPDF
         	//PHYSIOTHERAPY - 1st Session: RM 230
         	// 22/8/2016 3:49PM : RM230 --> RM250
         	$this->Cell($firstColumnSize,$lineSpace,' ','L');
-        	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'1st Session: RM 250','R');
+        	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'1st Session: RM250','R');
         	$this->SetFont('Times','',12);
         	$this->Ln();
         	
@@ -491,9 +491,9 @@ class PDF extends FPDF
         	$this->Cell($firstColumnSize,$lineSpace,'Physiotherapy','L');
         	$this->SetFont('Times','',12);
         	if(($physioDays-1) > 0) {
-        	    $this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'Subsequent Visits RM 180 X '.($physioDays-1).' days: RM'.($physioDays-1)*180,'R');
+        	    $this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'Subsequent Visits RM180 X '.($physioDays-1).' days: RM'.($physioDays-1)*180,'R');
         	} else {
-        	    $this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'Subsequent Visits: RM 180','R');
+        	    $this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'Subsequent Visits: RM180','R');
         	}
         	
         	$this->SetFont('Times','',12);
