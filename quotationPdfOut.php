@@ -292,7 +292,7 @@ class PDF extends FPDF
     function chargePage($title,$patientName, $patientIC, $patientAddress,$hourPerDay,$basicCharge,
                         $startDate,$endDate,$mileage,$adminFee,$gst,$totalAmount,$subTotalAmount,$intervalDays,$feeFor,
                         $physiotherapy,$quotationSummary,$additionalCharge,
-                        $nurseVisit,$doktorVisit,$physioDays,$nurseVisitDays,$doctorVisitDays) {
+                        $nurseVisit,$doktorVisit,$physioDays,$nurseVisitDays,$doctorVisitDays,$reasonAdditionalCharge) {
     
         $this->SetTextColor(0,0,0); // hitam
         $this->AddPage();
@@ -420,10 +420,10 @@ class PDF extends FPDF
         	
         	
         	
-        	//e) Additional Charge
+        	//e) Additional Charge  - .$reasonAdditionalCharge
         	if($additionalCharge > 0) {
-            	$this->Cell($firstColumnSize,$lineSpace,'d) Additional Charge','L');
-            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'d) Additional Charge @ RM'.$additionalCharge,'R');
+            	$this->Cell($firstColumnSize,$lineSpace,'d) '.$reasonAdditionalCharge,'L');
+            	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,'d) '.$reasonAdditionalCharge.' @ RM'.$additionalCharge,'R');
             	$this->SetFont('Times','',12);
             	$this->Ln();
             	
@@ -828,7 +828,8 @@ class PDF extends FPDF
                      $quotations->hourPerDay,$quotations->basicCharge,$quotations->startDate,$quotations->endDate,$quotations->mileage,
                      $quotations->adminFee,$quotations->gst,$quotations->totalAmount,$quotations->subTotalAmount,$totalDays,$quotations->feeFor,
                      $quotations->physiotherapy,$quotationSummary,$quotations->additionalCharge,
-                     $quotations->nurseVisit,$quotations->doktorVisit,$quotations->physioDays,$quotations->nurseVisitDays,$quotations->doctorVisitDays);
+                     $quotations->nurseVisit,$quotations->doktorVisit,$quotations->physioDays,$quotations->nurseVisitDays,
+                     $quotations->doctorVisitDays,$quotations->reasonAdditionalCharge);
     
     $pdf->termAndCondition($quotations->quotationNo,$quotations->quotationDate,$patientName,$customerName,'termAndCondition.txt');
     
