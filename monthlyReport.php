@@ -15,6 +15,7 @@
     <table border='1'>
       <tr>
         <td>Quotation Date</td>
+        <td>Introducer</td>
         <td>Code</td>
         <td>Caller Name</td>
         <td>Tel No</td>
@@ -38,6 +39,7 @@
           foreach($quotations_list as $quotation) {
             echo '<tr>';
             echo '<td>'.$quotation->quotationDate.'</td>';
+            echo '<td>'.$quotation->introducer.'</td>';
             echo '<td>'.$quotation->customerData->contactCode.'</td>';
             echo '<td>'.$quotation->customerData->firstName.'</td>';
             echo '<td>'.$quotation->customerData->mobile.'</td>';

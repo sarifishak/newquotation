@@ -13,7 +13,7 @@
   $output = fopen('php://output', 'w');
   
   // output the column headings
-  fputcsv($output, array('Quotation Date', 'Code','Caller Name', 'Tel No','Email','Location','Case Description'));
+  fputcsv($output, array('Quotation Date', 'Introducer','Code','Caller Name', 'Tel No','Email','Location','Case Description'));
   
   $quotations = new Quotations();
   $quotations_list= $quotations->selectByQuotationDate($_REQUEST['currentDate']);
@@ -27,7 +27,7 @@
                 $allNotes = $allNotes.$quotationNote->note;
           }
           
-          fputcsv($output, array($quotation->quotationDate, $quotation->customerData->contactCode, $quotation->customerData->firstName,$quotation->customerData->mobile,$quotation->customerData->email,$quotation->customerData->address,$allNotes));
+          fputcsv($output, array($quotation->quotationDate,$quotation->introducer, $quotation->customerData->contactCode, $quotation->customerData->firstName,$quotation->customerData->mobile,$quotation->customerData->email,$quotation->customerData->address,$allNotes));
       }
   }
 
