@@ -21,7 +21,7 @@
              // set an element
              // ref : http://stackoverflow.com/questions/12409299/how-to-get-current-formatted-date-dd-mm-yyyy-in-javascript-and-append-it-to-an-i
              
-             $("#currentDate").val( moment().format('YYYY-MM-D') );
+             //$("#currentDate").val( moment().format('YYYY-MM-D') );
              
          });
       
@@ -64,14 +64,25 @@
        
         echo $user->firstname.' '.$user->lastname.'.<br>';
         //echo 'Default page:'.$user->userTypeData->defaultPage.'.';
+        $currentDate = $_REQUEST['currentDate'];
+        //echo "currentDate=$currentDate";
+        if (empty($currentDate)) {
+            $currentDate = date("Y-m-d");;
+            $quotations = new Quotations();
+            $quotation_list = $quotations->selectAllNotDeleted();
+        } else {
+            $quotations = new Quotations();
+            $quotation_list = $quotations->selectByQuotationDate($currentDate);
+        }
         
         
       ?>
     </p>
     <p>List of inquiry:<?php echo '<button onclick="popupCenter(\'newInquiry.php?id=\',0,\'Import New\');">Import New</button>';?>
                        <?php echo '<button onclick="popupReport(\'monthlyReport.php?currentDate=\',0,\'Monthly Report\');">Monthly Report</button>';?>
-                       <input type="text" id="currentDate" name="currentDate">
+                       <input type="text" id="currentDate" name="currentDate" value="<?php echo $currentDate; ?>">
                        <?php echo '<button onclick="popupReport(\'monthlyCloseDealReport.php?currentDate=\',0,\'Monthly Close Deal Report\');">Monthly Close Deal Report</button>';?>
+                       <?php echo '<button onclick="popupReport(\'marketing.php?currentDate=\',0,\'Old Record\');">Old Record</button>';?>
                        <!-- <?php echo '<button onclick="popupCenter(\'quotationPdfOut.php?id=\',0,\'View Quotation\');">Test New Quotation</button>';?>   -->
                        <!-- <?php echo '<button onclick="popupCenter(\'newQuotation.php?id=\',0,\'View Quotation\');">Test New Quotation</button>';?> --></p>
     <table border='1'>
@@ -81,8 +92,7 @@
       </tr>
     <?php 
       //refer to user.php for the implementation of the class User 
-      $quotations = new Quotations();
-      $quotation_list = $quotations->selectAllNotDeleted();
+      
 
       foreach($quotation_list as $inquiry) {
         echo '<tr>';
