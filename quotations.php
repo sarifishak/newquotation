@@ -49,6 +49,9 @@ CREATE TABLE quotations(
 
 ALTER TABLE `quotations` ADD `locumFees` VARCHAR(100) NOT NULL AFTER `status`;
 ALTER TABLE `quotations` ADD `subTotalAmount` double default 0 AFTER `totalAmount`;
+ALTER TABLE `quotations` ADD `reasonAdditionalCharge` VARCHAR(100) NOT NULL DEFAULT 'Work On Weekend' AFTER `locumFees`;
+ALTER TABLE `quotations` ADD `introducer` VARCHAR(100) NOT NULL DEFAULT 'Google' AFTER `reasonAdditionalCharge`;
+
 
 */
   
@@ -87,6 +90,9 @@ ALTER TABLE `quotations` ADD `subTotalAmount` double default 0 AFTER `totalAmoun
   var $status;
   
   var $locumFees;
+  
+  var $reasonAdditionalCharge;
+  var $introducer;
   
   var $createdDate;
   var $createdId;
@@ -141,6 +147,8 @@ ALTER TABLE `quotations` ADD `subTotalAmount` double default 0 AFTER `totalAmoun
       $quotations->statusPaid = $dbfield['statusPaid'];
       $quotations->status = $dbfield['status'];
       $quotations->locumFees = $dbfield['locumFees'];
+      $quotations->reasonAdditionalCharge = $dbfield['reasonAdditionalCharge'];
+      $quotations->introducer = $dbfield['introducer'];
       $quotations->createdDate = $dbfield['createdDate'];
       $quotations->createdId = $dbfield['createdId'];
       
@@ -350,6 +358,8 @@ ALTER TABLE `quotations` ADD `subTotalAmount` double default 0 AFTER `totalAmoun
       $this->statusPaid = $dbfield['statusPaid'];
       $this->status = $dbfield['status'];
       $this->locumFees = $dbfield['locumFees'];
+      $this->reasonAdditionalCharge = $dbfield['reasonAdditionalCharge'];
+      $this->introducer = $dbfield['introducer'];
       $this->createdDate = $dbfield['createdDate'];
       $this->createdId = $dbfield['createdId'];
       

@@ -21,7 +21,7 @@ class ImportFieldManager{
                                  "customerId","patientId","quotationDate",
                                  "basicCharge","startTimeDaily","endTimeDaily",
                                  "startDate","endDate","mileage","additionalCharge","gst","discount","totalAmount",
-                                 "totalPaid","amountDue","statusPaid","status","locumFees","createdDate","createdId","nurseVisit","doktorVisit","nurseVisitDays", "doctorVisitDays", "physioDays");
+                                 "totalPaid","amountDue","statusPaid","status","locumFees","reasonAdditionalCharge","introducer","createdDate","createdId","nurseVisit","doktorVisit","nurseVisitDays", "doctorVisitDays", "physioDays");
 
   var $debugMsg;
   
@@ -396,6 +396,8 @@ class ImportFieldManager{
     $this->setInputDataByName("statusPaid",$quotations->statusPaid);
     $this->setInputDataByName("status",$quotations->status);
     $this->setInputDataByName("locumFees",$quotations->locumFees);
+    $this->setInputDataByName("reasonAdditionalCharge",$quotations->reasonAdditionalCharge);
+    $this->setInputDataByName("introducer",$quotations->introducer);
     $this->setInputDataByName("createdDate",$quotations->createdDate);
     $this->setInputDataByName("createdId",$quotations->createdId);
     
@@ -572,7 +574,8 @@ class ImportFieldManager{
                   ",feeFor=?,physiotherapy=?,nurseVisit=?,doktorVisit=?,nurseVisitDays=?,doctorVisitDays=?".
                   ",physioDays=?,chargeDays=?,quotationDate=?,basicCharge=?,startTimeDaily=?".
                   ",endTimeDaily=?,startDate=?,endDate=?,mileage=?,additionalCharge=?,gst=?".
-                  ",discount=?,totalAmount=?,subTotalAmount=?,totalPaid=?,amountDue=?,statusPaid=?,status=?,locumFees=? WHERE id=?;";
+                  ",discount=?,totalAmount=?,subTotalAmount=?,totalPaid=?,amountDue=?,statusPaid=?,status=?".
+                  ",locumFees=?,reasonAdditionalCharge=?, introducer=? WHERE id=?;";
       
       $debugMsg = $debugMsg."<br>Update  Quotation data:".$sql_stmt."<br>";
       
@@ -587,7 +590,8 @@ class ImportFieldManager{
                 $this->getInputDataByName("startDate"),$this->getInputDataByName("endDate"),$this->getInputDataByName("mileage"),
                 $this->getInputDataByName("additionalCharge"),$gst,$this->getInputDataByName("discount"),
                 $totalCharge,$subTotalAmount,$this->getInputDataByName("totalPaid"),$this->getInputDataByName("amountDue"),
-                $this->getInputDataByName("statusPaid"),$this->getInputDataByName("status"),$this->getInputDataByName("locumFees"),$this->getInputDataByName("id")
+                $this->getInputDataByName("statusPaid"),$this->getInputDataByName("status"),$this->getInputDataByName("locumFees"),
+                $this->getInputDataByName("reasonAdditionalCharge"),$this->getInputDataByName("introducer"),$this->getInputDataByName("id")
                 ));
   
       //check if SQL query is successful

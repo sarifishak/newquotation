@@ -317,6 +317,14 @@
                  <span>Locum Fees</span>
                  <input id="locumFees" type="text" name="locumFees"  value="<?php echo $importField->getInputDataByName('locumFees');?>">
                </label>
+               <label>
+                 <span>Reason for Additional Charge</span>
+                 <input id="reasonAdditionalCharge" type="text" name="reasonAdditionalCharge"  value="<?php echo $importField->getInputDataByName('reasonAdditionalCharge');?>">
+               </label>
+               <label>
+                 <span>Introducer</span>
+                 <input id="introducer" type="text" name="introducer"  value="<?php echo $importField->getInputDataByName('introducer');?>">
+               </label>
             </div>
 
 
