@@ -462,7 +462,7 @@ class PDF extends FPDF
         	$this->Ln();
         	
         	// Additional RM 100 for Weekend & Public Holidays
-        	$this->Cell($firstColumnSize,$lineSpace,'Additional RM100 for Weekend','L');
+        	$this->Cell($firstColumnSize,$lineSpace,'Additional RM50 for Weekend','L');
         	$this->Cell(4,$lineSpace,' ','R');$this->Cell(0,$lineSpace,' ','R');
         	$this->SetFont('Times','',12);
         	$this->Ln();
