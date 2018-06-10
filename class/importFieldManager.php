@@ -536,7 +536,7 @@ class ImportFieldManager{
         $chargeCareGiver = 0;
       }
       $subTotalAmount = $chargeCareGiver + $chargePhysio + $chargeNurse + $chargeDoctor;
-      $gst = $subTotalAmount*0.06;
+      $gst = $subTotalAmount*0.00;  // $gst = $subTotalAmount*0.06;
       $totalCharge = $subTotalAmount + $gst;
       /*
       $sql_stmt = "UPDATE quotations SET ".
