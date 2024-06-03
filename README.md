@@ -97,3 +97,13 @@ INSERT INTO contacts(contactTypeId,contactCode,firstName,lastName,ic,address,cit
 
 
 
+CREATE TABLE contacttypes(
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,	
+    contactType VARCHAR(100) NOT NULL
+);
+
+
+INSERT INTO contacttypes(contactType) VALUES ('CUSTOMER');
+
+
+
