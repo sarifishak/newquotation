@@ -72,4 +72,25 @@ CREATE TABLE users(
 
 INSERT INTO users(username,password,lastname,firstname,userType,status,createdDate,createdId) VALUES ('shima','shima','Samad','Shima',2,1,Now(),0);
 
+CREATE TABLE contacts(
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    contactTypeId int,	
+    firstName VARCHAR(100) NOT NULL,
+    lastName VARCHAR(100),
+    ic VARCHAR(100),
+    address VARCHAR(200),
+    city VARCHAR(100),
+    state VARCHAR(50),
+    postcode VARCHAR(50),
+    mobile VARCHAR(50),
+    office VARCHAR(50),
+    home VARCHAR(50),
+    fax VARCHAR(50),
+    email VARCHAR(100),
+    createdDate DATETIME,
+    createdId int
+);
+
+ALTER TABLE `contacts` ADD `contactCode` VARCHAR(100) NOT NULL AFTER `id`;
+
 
