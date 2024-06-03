@@ -45,14 +45,14 @@ ALTER TABLE `quotations` ADD `reasonAdditionalCharge` VARCHAR(100) NOT NULL DEFA
 ALTER TABLE `quotations` ADD `introducer` VARCHAR(100) NOT NULL DEFAULT 'Google' AFTER `reasonAdditionalCharge`;
 
 
-CREATE TABLE userTypes(
+CREATE TABLE usertypes(
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,	
     userType VARCHAR(100) NOT NULL,
     defaultPage VARCHAR(200) NOT NULL
 );
 
-INSERT INTO userTypes(userType,defaultPage) VALUES('admin','home.php');
-INSERT INTO userTypes(userType,defaultPage) VALUES('user','marketing.php');
+INSERT INTO usertypes(userType,defaultPage) VALUES('admin','home.php');
+INSERT INTO usertypes(userType,defaultPage) VALUES('user','marketing.php');
 
 
 
