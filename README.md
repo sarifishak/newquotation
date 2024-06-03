@@ -93,4 +93,7 @@ CREATE TABLE contacts(
 
 ALTER TABLE `contacts` ADD `contactCode` VARCHAR(100) NOT NULL AFTER `id`;
 
+INSERT INTO contacts(contactTypeId,contactCode,firstName,lastName,ic,address,city,state,postcode,mobile,office,home,fax,email,createdDate,createdId) VALUES (1,'CA0123','shima','samad','34343434343','addd','city','state','32232','01434334','034343434','03675644','0355422','email@com',Now(),1);
+
+
 
