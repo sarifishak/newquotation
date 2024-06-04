@@ -43,7 +43,9 @@ class Users{
         $this->createdId = $dbfield['createdId'];
         
     }
-    
+    //debug
+    return $found;
+    /*
     // get the user type and its default page
     if($found == true) {
         $userTypes = new UserTypes();
@@ -55,6 +57,7 @@ class Users{
     }
 
     return $found;
+    */
   }
 
   function selectAll(){
