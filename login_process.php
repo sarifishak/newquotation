@@ -12,9 +12,9 @@
     session_start();
     $_SESSION['current_user']=$user;
 
-    echo "default page=".$user->userTypeData->defaultPage;
+    //echo "default page=".$user->userTypeData->defaultPage;
 
-    //header($user->userTypeData->defaultPage);
+    header($user->userTypeData->defaultPage);
     //exit;
   }else{//invalid username and password
     echo "Invalid username/password for ".$user->username."/".$user->password." .  Click <a href='login.php'>[here]</a> to login again.<br>";
