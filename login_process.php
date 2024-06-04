@@ -12,6 +12,8 @@
     session_start();
     $_SESSION['current_user']=$user;
 
+    echo "default page=".$user->userTypeData->defaultPage;
+
     header($user->userTypeData->defaultPage);
     exit;
   }else{//invalid username and password
