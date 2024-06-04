@@ -70,7 +70,7 @@ CREATE TABLE users(
 
 );
 
-INSERT INTO users(username,password,lastname,firstname,userType,status,createdDate,createdId) VALUES ('shima','shima','Samad','Shima',2,1,Now(),0);
+INSERT INTO users(username,password,lastname,firstname,userType,status,createdDate,createdId) VALUES ('shima',md5('shima'),'Samad','Shima',2,1,Now(),0);
 
 CREATE TABLE contacts(
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
