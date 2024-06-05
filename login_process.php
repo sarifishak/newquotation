@@ -14,7 +14,8 @@
 
     //echo "default page=".$user->userTypeData->defaultPage;
     //header($user->userTypeData->defaultPage);
-    header('Location: https://www.php.net/manual/en/function.header.php');
+    //header('Location: https://www.php.net/manual/en/function.header.php');
+    header('Location: '.$user->userTypeData->defaultPage);
     //exit;
   }else{//invalid username and password
     echo "Invalid username/password for ".$user->username."/".$user->password." .  Click <a href='login.php'>[here]</a> to login again.<br>";
