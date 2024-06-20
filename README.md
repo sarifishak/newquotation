@@ -106,4 +106,9 @@ CREATE TABLE contacttypes(
 INSERT INTO contacttypes(contactType) VALUES ('CUSTOMER');
 
 
+I just created the "dbmanager.inc", but mistakenly save it as "dbManager.inc". I somehow cannot delete this.  So, I put this file under "database" sub dir. 
+
+Need to copy this file to main directory.
+
+
 
